@@ -37,7 +37,7 @@ export default function Carousel({ images, interval = 5000 }: CarouselProps) {
 
   return (
     <div
-      className="relative w-full aspect-[8/3] overflow-hidden bg-gray-900"
+      className="relative w-full aspect-[12/5] overflow-hidden bg-gray-900"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
