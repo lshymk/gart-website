@@ -37,7 +37,7 @@ export default function Carousel({ images, interval = 5000 }: CarouselProps) {
 
   return (
     <div
-      className="relative w-full min-h-[800px] overflow-hidden bg-gray-900"
+      className="relative w-full h-[800px] overflow-hidden bg-gray-900"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -50,12 +50,13 @@ export default function Carousel({ images, interval = 5000 }: CarouselProps) {
               index === currentIndex ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            {/* 图片容器 - 使用 aspect-video 保持 16:9 比例 */}
-            <div className="w-full aspect-video">
+            {/* 图片容器 - 固定高度 800px */}
+            <div className="w-full h-full">
               <img
                 src={image}
                 alt={`Carousel ${index + 1}`}
-                className="w-full h-full object-cover object-top"
+                className="w-full h-full object-contain"
+                style={{ objectPosition: 'center top' }}
               />
             </div>
             {/* 渐变遮罩 - 确保文字清晰可见 */}

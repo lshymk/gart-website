@@ -1,7 +1,6 @@
 'use client';
 
 import Navbar from '@/components/navbar';
-import { Download } from 'lucide-react';
 
 export default function AboutPage() {
   const brandData = {
@@ -53,19 +52,6 @@ G-ART谷亚秉承"以客户为中心"的服务理念，建立了完善的售前�
                   }
                   return null;
                 })}
-              </div>
-
-              {/* Download Link */}
-              <div className="mt-10 pt-6 border-t border-gray-200">
-                <a
-                  href="/brand-introduction.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors duration-300"
-                >
-                  <Download className="w-5 h-5 mr-2" />
-                  下载完整品牌介绍PDF
-                </a>
               </div>
             </div>
 
