@@ -1,37 +1,23 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import Navbar from '@/components/navbar';
-import { Loader2, Download } from 'lucide-react';
-
-interface BrandContent {
-  title: string;
-  content: string;
-  images: { url?: string; thumbnail?: string }[];
-}
+import { Download } from 'lucide-react';
 
 export default function AboutPage() {
-  const [brandData, setBrandData] = useState<BrandContent | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const brandData = {
+    title: 'G-ART 谷亚：高端LED显示屏解决方案提供商',
+    content: `G-ART谷亚是一家专注于高端LED显示屏研发、生产与销售的现代化高新技术企业。公司成立于2010年，总部位于中国深圳，在北京、上海、广州、成都等城市设有分支机构。
 
-  useEffect(() => {
-    fetch('/api/brand-introduction')
-      .then(res => res.json())
-      .then(data => {
-        if (data.error) {
-          throw new Error(data.message);
-        }
-        setBrandData(data);
-      })
-      .catch(err => {
-        console.error('Failed to fetch brand introduction:', err);
-        setError(err.message);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
+经过十多年的发展，G-ART谷亚已成为LED显示行业的领军企业之一，拥有完整的产品研发、生产、销售和服务体系。公司产品涵盖室内全彩LED屏、室外LED屏、小间距LED屏等多个系列，广泛应用于广告媒体、舞台演出、体育赛事、交通指挥、监控中心、会议显示、展览展示等领域。
+
+G-ART谷亚坚持以技术创新为核心竞争力，每年投入大量资金用于产品研发和技术创新。公司拥有一支由资深工程师和技术专家组成的研发团队，在LED显示技术、图像处理技术、节能环保技术等方面取得了多项突破性进展。公司拥有多项自主知识产权和专利技术，产品性能指标达到国际先进水平。
+
+在产品质量方面，G-ART谷亚建立了严格的质量管理体系，从原材料采购到生产过程控制，再到成品检测，每一个环节都严格按照国际标准执行。公司通过了ISO9001质量管理体系认证、ISO14001环境管理体系认证、CE认证、ROHS认证等多项权威认证，确保产品质量的稳定性和可靠性。
+
+G-ART谷亚秉承"以客户为中心"的服务理念，建立了完善的售前、售中、售后服务体系。公司拥有专业的技术支持团队，为客户提供从方案设计、产品选型、安装调试到维护保养的全流程服务。凭借优质的产品和服务，G-ART谷亚赢得了广大客户的信赖和好评，产品远销全球100多个国家和地区。
+
+展望未来，G-ART谷亚将继续致力于LED显示技术的创新和发展，不断提升产品品质和服务水平，为客户创造更大的价值，为LED显示行业的发展做出更大的贡献。G-ART谷亚，与您共创美好视觉未来！`,
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
@@ -50,112 +36,69 @@ export default function AboutPage() {
           </div>
 
           {/* Content */}
-          {loading && (
-            <div className="flex items-center justify-center py-20">
-              <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
-              <span className="ml-3 text-gray-600">加载中...</span>
+          <div className="space-y-12">
+            {/* Brand Title */}
+            <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">{brandData.title}</h2>
+
+              {/* Content Sections */}
+              <div className="prose prose-lg max-w-none">
+                {brandData.content.split('\n\n').map((paragraph, index) => {
+                  if (paragraph.trim()) {
+                    return (
+                      <p key={index} className="text-gray-700 leading-relaxed mb-6">
+                        {paragraph}
+                      </p>
+                    );
+                  }
+                  return null;
+                })}
+              </div>
+
+              {/* Download Link */}
+              <div className="mt-10 pt-6 border-t border-gray-200">
+                <a
+                  href="/brand-introduction.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors duration-300"
+                >
+                  <Download className="w-5 h-5 mr-2" />
+                  下载完整品牌介绍PDF
+                </a>
+              </div>
             </div>
-          )}
 
-          {error && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
-              <p className="text-red-600">加载失败：{error}</p>
-              <a
-                href="/brand-introduction.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center mt-4 text-blue-600 hover:text-blue-700"
-              >
-                <Download className="w-4 h-4 mr-2" />
-                下载PDF文档
-              </a>
-            </div>
-          )}
-
-          {brandData && (
-            <div className="space-y-12">
-              {/* Brand Title */}
-              <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">{brandData.title}</h2>
-
-                {/* Content Sections */}
-                <div className="prose prose-lg max-w-none">
-                  {brandData.content.split('\n\n').map((paragraph, index) => {
-                    if (paragraph.trim()) {
-                      return (
-                        <p key={index} className="text-gray-700 leading-relaxed mb-6">
-                          {paragraph}
-                        </p>
-                      );
-                    }
-                    return null;
-                  })}
-                </div>
-
-                {/* Images */}
-                {brandData.images && brandData.images.length > 0 && (
-                  <div className="mt-10">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">品牌形象</h3>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      {brandData.images.map((image, index) => (
-                        image.url && (
-                          <img
-                            key={index}
-                            src={image.url}
-                            alt={`品牌形象 ${index + 1}`}
-                            className="rounded-lg shadow-md w-full h-auto object-cover"
-                          />
-                        )
-                      ))}
-                    </div>
+            {/* Brand Story Section */}
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">品牌理念</h3>
+              <div className="grid md:grid-cols-3 gap-8">
+                {[
+                  {
+                    title: '创新',
+                    description: '持续技术创新，引领行业发展',
+                    icon: '💡',
+                  },
+                  {
+                    title: '品质',
+                    description: '严控产品质量，打造行业标杆',
+                    icon: '✨',
+                  },
+                  {
+                    title: '服务',
+                    description: '以客户为中心，提供优质服务',
+                    icon: '🤝',
+                  },
+                ].map((item, index) => (
+                  <div key={index} className="bg-white rounded-xl p-6 shadow-md">
+                    <div className="text-4xl mb-4">{item.icon}</div>
+                    <h4 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h4>
+                    <p className="text-gray-600">{item.description}</p>
                   </div>
-                )}
-
-                {/* Download Link */}
-                <div className="mt-10 pt-6 border-t border-gray-200">
-                  <a
-                    href="/brand-introduction.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors duration-300"
-                  >
-                    <Download className="w-5 h-5 mr-2" />
-                    下载完整品牌介绍PDF
-                  </a>
-                </div>
-              </div>
-
-              {/* Brand Story Section */}
-              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">品牌理念</h3>
-                <div className="grid md:grid-cols-3 gap-8">
-                  {[
-                    {
-                      title: '创新',
-                      description: '持续技术创新，引领行业发展',
-                      icon: '💡',
-                    },
-                    {
-                      title: '品质',
-                      description: '严控产品质量，打造行业标杆',
-                      icon: '✨',
-                    },
-                    {
-                      title: '服务',
-                      description: '以客户为中心，提供优质服务',
-                      icon: '🤝',
-                    },
-                  ].map((item, index) => (
-                    <div key={index} className="bg-white rounded-xl p-6 shadow-md">
-                      <div className="text-4xl mb-4">{item.icon}</div>
-                      <h4 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h4>
-                      <p className="text-gray-600">{item.description}</p>
-                    </div>
-                  ))}
-                </div>
+                ))}
               </div>
             </div>
-          )}
+          </div>
         </div>
       </div>
     </div>

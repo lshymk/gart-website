@@ -24,7 +24,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
-            <img src="/logo.png" alt="G-ART Logo" className="h-12 w-auto" />
+            <img src="/logo.png" alt="G-ART Logo" className="h-18 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
