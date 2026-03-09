@@ -1,14 +1,28 @@
 import Link from 'next/link';
 import { ArrowRight, Play, CheckCircle2 } from 'lucide-react';
 import Navbar from '@/components/navbar';
+import Carousel from '@/components/carousel';
 
 export default function Home() {
+  const carouselImages = [
+    '/carousel-01.jpg',
+    '/carousel-02.jpg',
+    '/carousel-03.jpg',
+    '/carousel-04.jpg',
+    '/carousel-05.jpg',
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      {/* Hero Carousel Section */}
+      <section className="relative">
+        <Carousel images={carouselImages} interval={5000} />
+      </section>
+
+      {/* Brand Introduction Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto text-center">
             <div className="mb-8">
