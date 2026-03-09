@@ -200,6 +200,38 @@ import { cn } from '@/lib/utils';
 </div>
 ```
 
+## 🚀 部署（一键部署）
+
+### 快速部署
+
+```bash
+# 1. 设置 Vercel Token（仅第一次需要）
+export VERCEL_TOKEN=your-token-here
+
+# 2. 运行部署
+pnpm run deploy
+```
+
+**获取 Vercel Token**：
+1. 访问 https://vercel.com/account/tokens
+2. 点击 "Create Token"
+3. 复制 Token（只显示一次）
+
+### 详细说明
+
+完整的部署文档请查看 [DEPLOYMENT.md](./DEPLOYMENT.md)
+
+**部署脚本会自动**：
+- ✅ 运行类型检查
+- ✅ 构建项目
+- ✅ 部署到 Vercel 生产环境
+- ✅ 显示部署结果和访问 URL
+
+### 访问网站
+
+- 生产环境：https://projects-self-one.vercel.app
+- 本地预览：http://localhost:5000
+
 **主题变量**
 
 主题变量定义在 `src/app/globals.css` 中，支持亮色/暗色模式：
