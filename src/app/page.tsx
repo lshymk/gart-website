@@ -1,28 +1,25 @@
 import Link from 'next/link';
 import { ArrowRight, Play, CheckCircle2 } from 'lucide-react';
 import Navbar from '@/components/navbar';
+import Carousel from '@/components/carousel';
 import { Suspense } from 'react';
 
 export default function Home() {
+  const carouselImages = [
+    '/carousel-01.jpg',
+    '/carousel-02.jpg',
+    '/carousel-03.jpg',
+    '/carousel-04.jpg',
+    '/carousel-05.jpg',
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       <Navbar />
 
-      {/* Hero Section - 临时简化版用于测试 */}
-      <section className="relative h-[600px] bg-gradient-to-br from-blue-600 to-indigo-700">
-        <div className="container mx-auto px-4 h-full flex items-center justify-center">
-          <div className="text-center text-white">
-            <div className="mb-8">
-              <img src="/logo.png" alt="G-ART Logo" className="h-24 mx-auto mb-8" />
-            </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-              G-ART 谷亚
-            </h1>
-            <p className="text-xl md:text-2xl mb-4 font-light">
-              高端LED显示屏解决方案
-            </p>
-          </div>
-        </div>
+      {/* Hero Section - 轮播图 */}
+      <section>
+        <Carousel images={carouselImages} interval={5000} />
       </section>
 
       {/* Brand Introduction Section */}
