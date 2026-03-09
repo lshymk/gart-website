@@ -37,7 +37,7 @@ export default function Carousel({ images, interval = 5000 }: CarouselProps) {
 
   return (
     <div
-      className="relative w-full h-[800px] overflow-hidden bg-gray-900"
+      className="relative w-full aspect-[8/3] overflow-hidden bg-gray-900"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -50,8 +50,8 @@ export default function Carousel({ images, interval = 5000 }: CarouselProps) {
               index === currentIndex ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            {/* 图片容器 - 确保完整显示 800px 高度 */}
-            <div className="w-full h-[800px] relative">
+            {/* 图片容器 - 响应式高度，保持8:3比例 */}
+            <div className="w-full h-full relative">
               <img
                 src={image}
                 alt={`Carousel ${index + 1}`}
