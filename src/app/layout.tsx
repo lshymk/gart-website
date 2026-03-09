@@ -22,13 +22,11 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'G-ART 谷亚' }],
   icons: {
-    icon: [
-      { url: '/logo02.jpg', sizes: '32x32', type: 'image/jpeg' },
-      { url: '/logo02.jpg', sizes: '16x16', type: 'image/jpeg' },
-    ],
-    shortcut: '/logo02.jpg',
-    apple: '/logo02.jpg',
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
   },
+  manifest: '/manifest.json',
   openGraph: {
     title: 'G-ART 谷亚 | 高端LED显示屏解决方案',
     description: '专注高端LED显示屏研发、生产与销售，提供专业的LED显示解决方案',

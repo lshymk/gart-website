@@ -50,8 +50,8 @@ export default function Carousel({ images, interval = 5000 }: CarouselProps) {
               index === currentIndex ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            {/* 图片容器 - 固定高度 800px */}
-            <div className="w-full h-full">
+            {/* 图片容器 - 确保完整显示 800px 高度 */}
+            <div className="w-full h-[800px] relative">
               <img
                 src={image}
                 alt={`Carousel ${index + 1}`}
