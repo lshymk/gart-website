@@ -56,7 +56,7 @@ export default function Carousel({ images, interval = 5000 }: CarouselProps) {
                 src={image}
                 alt={`Carousel ${index + 1}`}
                 className="w-full h-full object-contain"
-                style={{ objectPosition: 'center top' }}
+                style={{ objectPosition: 'center center' }}
               />
             </div>
             {/* 渐变遮罩 - 确保文字清晰可见 */}
